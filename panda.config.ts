@@ -1,4 +1,11 @@
-import { defineConfig } from "@pandacss/dev";
+import { defineConfig, defineGlobalStyles } from "@pandacss/dev";
+
+const globalCss = defineGlobalStyles({
+  "html, body": {
+    color: "gray.900",
+    lineHeight: "1.5",
+  },
+});
 
 export default defineConfig({
   // Whether to use css reset
@@ -9,6 +16,9 @@ export default defineConfig({
 
   // Files to exclude
   exclude: [],
+
+  //Global style
+  globalCss,
 
   // Useful for theme customization
   theme: {
