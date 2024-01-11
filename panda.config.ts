@@ -11,6 +11,10 @@ export default defineConfig({
   //presets
   presets: ["@pandacss/preset-panda"],
 
+  //watch
+  watch: true,
+  jsxFramework: "react",
+
   // Whether to use css reset
   preflight: true,
 
