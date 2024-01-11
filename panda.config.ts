@@ -8,11 +8,14 @@ const globalCss = defineGlobalStyles({
 });
 
 export default defineConfig({
+  //presets
+  presets: ["@pandacss/preset-panda"],
+
   // Whether to use css reset
   preflight: true,
 
   // Where to look for your css declarations
-  include: ["./src/**/*.{js,jsx,ts,tsx}", "./pages/**/*.{js,jsx,ts,tsx}"],
+  include: ["./src/**/*.{js,jsx,ts,tsx}"],
 
   // Files to exclude
   exclude: [],
