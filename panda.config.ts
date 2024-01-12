@@ -3,7 +3,12 @@ import { defineConfig, defineGlobalStyles } from "@pandacss/dev";
 const globalCss = defineGlobalStyles({
   "html, body": {
     color: "gray.900",
-    lineHeight: "1.5",
+    boxSizing: "border-box",
+    scrollbarGutter: "always",
+  },
+  body: {
+    width: "calc(100vw-16px)",
+    lineHeight: 1.6,
   },
 });
 

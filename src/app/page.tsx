@@ -1,62 +1,43 @@
 "use client";
-import ImageOverLaySection from "@/components/ImageOverLaySection";
-import BarPlot from "@/components/charts/BarPlot";
-import { convertCSVtoJson } from "@/readCsv";
-import { ChangeEvent, useEffect, useState } from "react";
-import "../index.css";
-import { css } from "../../styled-system/css";
+import H1 from "@components/base/Typography/H1";
+import H2 from "@components/base/Typography/H2";
+import { css } from "@styled-system/css";
+import { styled } from "@styled-system/jsx";
 
 export default function Home() {
-  const [file, setFile] = useState<File>();
-  const [data, setData] = useState<{ [key: string]: string }[]>();
-
-  useEffect(() => {}, []);
-
   return (
     <main>
-      <div className={css({ fontSize: "2xl", fontWeight: "bold" })}>
-        Hello 🐼!
-      </div>
-      <div>children</div>
-      <p>ENTER CSV FILE</p>
-      <input
-        type="file"
-        accept=".csv"
-        onChange={async (e: ChangeEvent<HTMLInputElement>) => {
-          if (!e.target.files) return;
-          setFile(e.target.files[0]);
-          const readFile = (file: File) =>
-            new Promise((resolve, reject) => {
-              const reader = new FileReader();
-              reader.onload = (e) => resolve(reader.result);
-              reader.readAsText(file);
-            });
-
-          const csvText = await readFile(e.target.files[0]);
-          const jsonArr = convertCSVtoJson(csvText as string);
-          //집계하기 x-연도, y-농가의 개수
-          const yearMap = new Map();
-          jsonArr.forEach((jsonObj) => {
-            const year = "년도";
-            const VALUE = jsonObj[year];
-            if (yearMap.has(VALUE)) {
-              const count = yearMap.get(VALUE);
-              yearMap.set(VALUE, count + 1);
-            } else {
-              yearMap.set(VALUE, 1);
-            }
-          });
-          const finalData = Array.from(yearMap.entries())
-            .map(([key, value]) => ({
-              년도: key,
-              개수: value,
-            }))
-            .sort((a, b) => a["년도"] - b["년도"]);
-          setData(finalData);
-        }}
-      />
-      <BarPlot data={data} />
-      <ImageOverLaySection src="https://via.placeholder.com/100x100" />
+      <styled.section>
+        <div
+          className={css({
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+            paddingTop: "14vw",
+            paddingBottom: "12vw",
+            paddingLeft: "3%",
+            paddingRight: "3%",
+            backgroundImage: "url(/assets/main_img.jpg)",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: { base: "cover" },
+            zIndex: 1,
+            boxSizing: "border-box",
+          })}
+        >
+          <div
+            className={css({
+              width: "100%",
+              rounded: "10px",
+            })}
+          >
+            <H1>Farmer’s Point of View</H1>
+            <H2>Represent pig on pig side.</H2>
+          </div>
+        </div>
+      </styled.section>
     </main>
   );
 }
