@@ -1,8 +1,8 @@
 import { css } from "@styled-system/css";
 import { SystemStyleObject } from "@styled-system/types";
-import { PropsWithChildren } from "react";
+import { ComponentProps, PropsWithChildren } from "react";
 
-interface TextComponent extends PropsWithChildren {
+interface TextComponent extends ComponentProps<"h1"> {
   css?: SystemStyleObject;
 }
 
@@ -14,7 +14,15 @@ const style1 = {
   textAlign: "center",
 } as SystemStyleObject;
 
-export default function H1({ children, css: cssProp }: TextComponent) {
+export default function H1({
+  children,
+  css: cssProp,
+  ...restProps
+}: TextComponent) {
   const clsx = css(style1, cssProp);
-  return <h1 className={clsx}>{children} </h1>;
+  return (
+    <h1 className={clsx} {...restProps}>
+      {children}{" "}
+    </h1>
+  );
 }

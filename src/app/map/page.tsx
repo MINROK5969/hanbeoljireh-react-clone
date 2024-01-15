@@ -1,12 +1,11 @@
-"use client";
 import PageTitleSectionWithImageBackground from "@components/PageTitleSectionWithImageBackground";
 
-export default function Home() {
+export default function MapPage() {
   return (
     <main>
       <PageTitleSectionWithImageBackground
-        title="Farmer’s Point of View"
-        subTitle="Represent pig on pig side."
+        title="MAP TEST PAGE"
+        subTitle="지도 표 만드는 페이지"
         imgSrc="/assets/main_img.jpg"
       />
     </main>
