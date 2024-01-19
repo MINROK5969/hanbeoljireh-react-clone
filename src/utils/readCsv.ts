@@ -1,7 +1,3 @@
-import { Number, String } from "../styled-system/types";
-
-// const fs = require("fs");
-
 export const convertCSVtoJson = (csvString: string) => {
   const SEP = ",";
   const dataArr = csvString.split("\r\n");

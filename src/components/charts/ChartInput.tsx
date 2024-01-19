@@ -1,29 +1,27 @@
-import H1 from "@components/base/Typography/H1";
-import { convertCSVtoJson } from "@readCsv";
-import { ChangeEvent, useEffect, useState } from "react";
+"use client";
 
-import BarPlot from "./BarPlot";
+import { ChangeEvent, useEffect, useState } from "react";
+import ComposedChartDisplay from "./ComposedChartDisplay";
+import H2 from "@components/base/Typography/H2";
+import { flex } from "@styled-system/patterns";
 import { css } from "@styled-system/css";
+import { convertCSVtoJson } from "@utils/readCsv";
+
+interface DataRow {
+  년도: number;
+  농장명: string;
+  위치: string;
+  품목: string;
+}
 
 export default function ChartInput() {
   const [file, setFile] = useState<File>();
-  const [data, setData] = useState<{ [key: string]: string }[]>();
+  const [data, setData] = useState<[string, DataRow[]][]>();
 
   useEffect(() => {}, []);
 
   return (
-    <>
-      <H1 css={{ color: "gray.100", bg: "blue.400" }}>This is H1</H1>
-      <h2
-        className={css({
-          fontSize: "2xl",
-          fontWeight: "bold",
-          color: { base: "orange.200", _hover: "blue.400" },
-        })}
-      >
-        Hello 🐼!
-      </h2>
-      <div>children</div>
+    <div className={css({ maxW: "1400", mx: "auto" })}>
       <p>ENTER CSV FILE</p>
       <input
         type="file"
@@ -41,27 +39,60 @@ export default function ChartInput() {
           const csvText = await readFile(e.target.files[0]);
           const jsonArr = convertCSVtoJson(csvText as string);
           //집계하기 x-연도, y-농가의 개수
-          const yearMap = new Map();
+          const groupByLocation = new Map();
           jsonArr.forEach((jsonObj) => {
-            const year = "년도";
-            const VALUE = jsonObj[year];
-            if (yearMap.has(VALUE)) {
-              const count = yearMap.get(VALUE);
-              yearMap.set(VALUE, count + 1);
+            const LOCATION_KEY = "위치";
+            const VALUE = jsonObj[LOCATION_KEY];
+            if (groupByLocation.has(VALUE)) {
+              const currList = groupByLocation.get(VALUE);
+              groupByLocation.set(VALUE, [...currList, jsonObj]);
             } else {
-              yearMap.set(VALUE, 1);
+              groupByLocation.set(VALUE, [jsonObj]);
             }
           });
-          const finalData = Array.from(yearMap.entries())
-            .map(([key, value]) => ({
-              년도: key,
-              개수: value,
-            }))
-            .sort((a, b) => a["년도"] - b["년도"]);
-          setData(finalData);
+          const finalData = Array.from(groupByLocation.entries()) as [
+            string,
+            DataRow[]
+          ][];
+
+          setData(finalData.sort((a, b) => a[0].localeCompare(b[0])));
         }}
       />
-      <BarPlot data={data} />
-    </>
+      <div
+        className={css({
+          display: "grid",
+          gridTemplateColumns: "3",
+        })}
+      >
+        {data?.map((s) => {
+          const yearMap = new Map();
+          s[1].forEach((obj) => {
+            yearMap.has(obj.년도)
+              ? yearMap.set(obj.년도, yearMap.get(obj.년도) + 1)
+              : yearMap.set(obj.년도, 1);
+          });
+          let sum = 0;
+          const parsedData = Array.from(yearMap.entries()).map(
+            ([year, count]) => {
+              sum += count;
+              return {
+                년도: year,
+                당해실적: count,
+                누적실적: sum,
+              };
+            }
+          );
+          return (
+            <div
+              key={s[0]}
+              className={flex({ flexDir: "column", align: "center" })}
+            >
+              <H2 css={{ color: "black", marginLeft: "15%" }}>{s[0]}</H2>
+              <ComposedChartDisplay data={parsedData} key={s[0]} />
+            </div>
+          );
+        })}
+      </div>
+    </div>
   );
 }
