@@ -1,6 +1,6 @@
 import { css } from "@styled-system/css";
 import { SystemStyleObject } from "@styled-system/types";
-import { ComponentProps, PropsWithChildren } from "react";
+import { ComponentProps } from "react";
 
 interface TextComponent extends ComponentProps<"h1"> {
   css?: SystemStyleObject;

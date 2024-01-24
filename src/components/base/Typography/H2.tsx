@@ -9,7 +9,7 @@ interface TextComponent extends PropsWithChildren {
 const style1 = {
   color: "#fff",
   fontWeight: "light",
-  fontSize: { base: "2rem", smDown: "21px", sm: "32px" },
+  fontSize: { base: "2rem", smDown: "21px", sm: "2rem", md: "2.625rem" },
   textAlign: "center",
 } as SystemStyleObject;
 

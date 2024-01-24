@@ -3,22 +3,23 @@ import { styled } from "@styled-system/jsx";
 import H1 from "./base/Typography/H1";
 import H2 from "./base/Typography/H2";
 import { css } from "@styled-system/css";
+import { SystemStyleObject } from "@pandacss/dev";
 
 interface PageTitleSectionWithImageBackground {
   title: string;
   subTitle?: string;
-  imgSrc: string;
+  css: SystemStyleObject;
 }
 
 export default function PageTitleSectionWithImageBackground({
   title,
   subTitle,
-  imgSrc,
+  css: cssProp,
 }: PageTitleSectionWithImageBackground) {
   return (
     <styled.section>
       <div
-        className={css({
+        className={css(cssProp, {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
@@ -28,7 +29,6 @@ export default function PageTitleSectionWithImageBackground({
           paddingBottom: "12vw",
           paddingLeft: "3%",
           paddingRight: "3%",
-          backgroundImage: `url(${imgSrc})`,
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: { base: "cover" },
@@ -39,7 +39,6 @@ export default function PageTitleSectionWithImageBackground({
         <div
           className={css({
             width: "100%",
-            rounded: "10px",
           })}
         >
           <H1>{title}</H1>
