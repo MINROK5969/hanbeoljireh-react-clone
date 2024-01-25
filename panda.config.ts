@@ -71,6 +71,13 @@ export default defineConfig({
           "0%": { transform: "scale(1)" },
           "100%": { transform: "scale(1.5)" },
         },
+        draw: {
+          "0%": {
+            strokeDasharray: "150px",
+            strokeDashoffset: "-150px",
+          },
+          "100%": { strokeDashoffset: "0" },
+        },
       },
     },
   },

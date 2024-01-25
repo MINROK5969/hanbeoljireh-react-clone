@@ -268,8 +268,10 @@ export const iconWithAnimation = {
   justifyContent: "center",
   alignItems: "center",
   mb: { base: "1.5rem" },
-  "& path": { stroke: "cardIconSVG" },
-  animation: "bounce 2000ms ease infinite",
+  "& path": {
+    stroke: "cardIconSVG",
+    animation: "draw 2000ms linear",
+  },
 };
 
 export const flexColWithMobileAndRowWithTablet = {
