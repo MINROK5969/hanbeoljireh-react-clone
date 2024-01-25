@@ -9,11 +9,11 @@ interface TextComponent extends PropsWithChildren {
 const style1 = {
   color: "#fff",
   fontWeight: "light",
-  fontSize: { base: "2rem", smDown: "1.125rem", md: "2.625rem" },
+  fontSize: { base: "1.5rem", mobile: "1.25rem" },
   textAlign: "center",
 } as SystemStyleObject;
 
-export default function H2({ children, css: cssProp }: TextComponent) {
+export default function H5({ children, css: cssProp }: TextComponent) {
   const clsx = css(style1, cssProp);
-  return <h2 className={clsx}>{children} </h2>;
+  return <h5 className={clsx}>{children} </h5>;
 }

@@ -8,7 +8,7 @@ interface TextComponent extends ComponentProps<"h1"> {
 
 const style1 = {
   color: "#fff",
-  fontSize: { base: "4rem", smDown: "33px", sm: "52px" },
+  fontSize: { base: "4rem", mobile: "33px", sm: "52px" },
   p: "1%",
   fontWeight: "bold",
   textAlign: "center",
