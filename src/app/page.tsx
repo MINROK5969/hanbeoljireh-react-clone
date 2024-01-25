@@ -7,6 +7,7 @@ import PlusIcon from "@asset/plus_circle_fill.svg";
 import HomeSVGIcon from "@asset/HomeIcon.svg";
 import ProductsIcon from "@asset/ProductsIcon.svg";
 import ProjectsIcon from "@asset/ProjectsIcon.svg";
+import ContactIcon from "@asset/ContactIcon.svg";
 import Tooltip from "@mui/material/Tooltip";
 import IconButton from "@mui/material/IconButton";
 import { styled } from "@styled-system/jsx";
@@ -227,7 +228,7 @@ export default function Home() {
               className={cx(css(cardItem), css({ animationDelay: "400ms" }))}
             >
               <span className={css(iconWithAnimation)}>
-                <HomeSVGIcon />
+                <ContactIcon />
               </span>
               <H5Icon type="cardTitle">Contact</H5Icon>
               <p>양돈농가의 생산성 향상과</p>
