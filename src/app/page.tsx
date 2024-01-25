@@ -1,7 +1,7 @@
 "use client";
 import PageTitleSectionWithImageBackground from "@components/PageTitleSectionWithImageBackground";
 import H2 from "@components/base/Typography/H2";
-import { RecipeVariantProps, css, cva, cx } from "@styled-system/css";
+import { css, cva, cx } from "@styled-system/css";
 import Image from "next/image";
 import PlusIcon from "@asset/plus_circle_fill.svg";
 import HomeSVGIcon from "@asset/HomeIcon.svg";
@@ -11,7 +11,6 @@ import ContactIcon from "@asset/ContactIcon.svg";
 import Tooltip from "@mui/material/Tooltip";
 import IconButton from "@mui/material/IconButton";
 import { styled } from "@styled-system/jsx";
-import Paragraph from "@components/base/Typography/Paragraph";
 import H5 from "@components/base/Typography/H5";
 import Link from "next/link";
 
@@ -175,9 +174,9 @@ export default function Home() {
         </div>
       </Section>
       <Section>
-        <Paragraph css={{ color: "black", pb: "27px" }}>
+        <HomeParagraph role="sectionTitle">
           더 나은 기술과 제품으로 농장별로 알맞게 컨설팅과 설치를 제공합니다.
-        </Paragraph>
+        </HomeParagraph>
         <H5 css={{ color: "#bbbbbb" }}>Keep it short and simple</H5>
       </Section>
       <Section className={css({ pt: { mdDown: "0px" } })}>
@@ -190,11 +189,15 @@ export default function Home() {
                 <HomeSVGIcon />
               </div>
               <H5Icon type="cardTitle">Company Info</H5Icon>
-              <p className={css({ color: "cardBody" })}>
+              <HomeParagraph role="cardBody">
                 양돈농가의 생산성 향상과
-              </p>
-              <p>양돈산업의 발전을 위해</p>
-              <p>매진하고 있습니다.</p>
+                <br className={css({ hideBelow: "sm" })} />
+                <span> </span>
+                양돈산업의 발전을 위해
+                <br className={css({ hideBelow: "sm" })} />
+                <span> </span>
+                매진하고 있습니다.
+              </HomeParagraph>
             </div>
           </Link>
           <Link href={"/projects"}>
@@ -205,9 +208,15 @@ export default function Home() {
                 <ProductsIcon />
               </span>
               <H5Icon type="cardTitle">Products</H5Icon>
-              <p>양돈농가의 생산성 향상과</p>
-              <p>양돈산업의 발전을 위해</p>
-              <p>매진하고 있습니다.</p>
+              <HomeParagraph role="cardBody">
+                저희 한별이레와
+                <br className={css({ hideBelow: "sm" })} />
+                <span> </span>
+                함께해오고 있는 회사의
+                <br />
+                제품들을 소개합니다.
+                <br />
+              </HomeParagraph>
             </div>
           </Link>
           <Link href={"/projects"}>
@@ -218,9 +227,14 @@ export default function Home() {
                 <ProjectsIcon />
               </span>
               <H5Icon type="cardTitle">Projects</H5Icon>
-              <p>양돈농가의 생산성 향상과</p>
-              <p>양돈산업의 발전을 위해</p>
-              <p>매진하고 있습니다.</p>
+              <HomeParagraph role="cardBody">
+                각 클라이언트의
+                <br className={css({ hideBelow: "sm" })} />
+                프로젝트 성과 설명과
+                <br />
+                360도 비디오를 보여줍니다.
+                <br />
+              </HomeParagraph>
             </div>
           </Link>
           <Link href={"/contact"}>
@@ -231,9 +245,12 @@ export default function Home() {
                 <ContactIcon />
               </span>
               <H5Icon type="cardTitle">Contact</H5Icon>
-              <p>양돈농가의 생산성 향상과</p>
-              <p>양돈산업의 발전을 위해</p>
-              <p>매진하고 있습니다.</p>
+              <HomeParagraph role="cardBody">
+                찾아오시는 길, 문의/주문/견적에
+                <br />
+                대하여 자세히 알 수 있습니다.
+                <br />
+              </HomeParagraph>
             </div>
           </Link>
         </div>
@@ -248,7 +265,7 @@ export const H5Icon = styled(
     base: {
       color: "#fff",
       fontWeight: "light",
-      fontSize: { base: "1.5rem", mobile: "1.25rem" },
+      fontSize: { base: "1.5rem", mobile: "1rem" },
       textAlign: "center",
     },
     variants: {
@@ -315,3 +332,38 @@ export const HorizontalDivider = styled(
     defaultVariants: { size: "md" },
   })
 );
+
+const paragraphStyle = cva({
+  base: {
+    color: "#424242",
+    fontWeight: "medium",
+    fontSize: {
+      base: "1.5rem",
+      mobile: "1.125rem",
+      sm: "1.25rem",
+      md: "2.25rem",
+    },
+    textAlign: "center",
+    lineHeight: { sm: "50px", md: "50px" },
+  },
+  variants: {
+    role: {
+      sectionTitle: {
+        color: "black",
+        pb: "27px",
+      },
+      cardBody: {
+        color: "cardBody",
+        fontSize: {
+          mobile: "0.8rem",
+          sm: "1rem",
+          md: "1rem",
+          lg: "1rem",
+        },
+        lineHeight: 1.5,
+      },
+    },
+  },
+});
+
+const HomeParagraph = styled("p", paragraphStyle);
