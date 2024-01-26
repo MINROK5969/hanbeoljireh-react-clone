@@ -36,17 +36,18 @@ export default function RootLayout({
     <html lang="en">
       <body className={noto_sans_kr.className}>
         <styled.header
-          w="full"
+          w="100%"
           h="fit"
           display="flex"
           pt="28px"
           background="transparent"
           position="fixed"
           color="white"
+          zIndex={999}
         >
           <styled.div
             paddingX="90px"
-            w="full"
+            w="100%"
             className={flex({ justify: "space-between" })}
           >
             <div>

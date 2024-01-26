@@ -78,6 +78,14 @@ export default defineConfig({
           },
           "100%": { strokeDashoffset: "0" },
         },
+        slide: {
+          from: {
+            transform: "translateX(0)",
+          },
+          to: {
+            transform: "translateX(-100%)",
+          },
+        },
       },
     },
   },

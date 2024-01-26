@@ -13,6 +13,8 @@ import IconButton from "@mui/material/IconButton";
 import { styled } from "@styled-system/jsx";
 import H5 from "@components/base/Typography/H5";
 import Link from "next/link";
+import Carousel from "@components/compound/Carousel";
+import { PropsWithChildren } from "react";
 
 const plusIconContainer = cva({
   base: {
@@ -62,6 +64,26 @@ const plusIconContainer = cva({
     target: "AirScrubber",
   },
 });
+
+var settings = {
+  dots: true,
+  infinite: true,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 2000,
+  pauseOnHover: true,
+};
+
+const LOGO_PATHS = [
+  "/assets/partners-logo/main_clientLogo_01_farmtech.png",
+  "/assets/partners-logo/main_clientLogo_02_fancom.png",
+  "/assets/partners-logo/main_clientLogo_03_dacs.png",
+  "/assets/partners-logo/main_clientLogo_04_ms_schippers.png",
+  "/assets/partners-logo/main_clientLogo_05_envirologic.png",
+  "/assets/partners-logo/main_clientLogo_06_osi.png",
+  "/assets/partners-logo/main_clientLogo_07_skiold.png",
+];
 
 export const PlusIconContainer = styled("div", plusIconContainer);
 
@@ -173,91 +195,235 @@ export default function Home() {
           </div>
         </div>
       </Section>
-      <Section>
-        <HomeParagraph role="sectionTitle">
-          더 나은 기술과 제품으로 농장별로 알맞게 컨설팅과 설치를 제공합니다.
-        </HomeParagraph>
-        <H5 css={{ color: "#bbbbbb" }}>Keep it short and simple</H5>
+      <Section bg="white">
+        <div
+          className={css({
+            maxWidth: {
+              smDown: "320",
+              sm: "420",
+              md: "600",
+              lg: "1028",
+              xl: "1245",
+            },
+            mx: "auto",
+          })}
+        >
+          <HomeParagraph role="sectionTitle">
+            더 나은 기술과 제품으로 농장별로 알맞게 컨설팅과 설치를 제공합니다.
+          </HomeParagraph>
+          <H5 css={{ color: "#bbbbbb" }}>Keep it short and simple</H5>
+        </div>
       </Section>
-      <Section className={css({ pt: { mdDown: "0px" } })}>
-        <div className={css(flexColWithMobileAndRowWithTablet)}>
-          <Link href={"/company-info"}>
-            <div
-              className={cx(css(cardItem), css({ animationDelay: "100ms" }))}
-            >
-              <div className={css(iconWithAnimation)}>
-                <HomeSVGIcon />
+      <Section bg="white" className={css({ pt: { mdDown: "0px" } })}>
+        <div
+          className={css({
+            maxWidth: {
+              smDown: "320",
+              sm: "420",
+              md: "600",
+              lg: "1028",
+              xl: "1245",
+            },
+            mx: "auto",
+          })}
+        >
+          <div className={css(flexColWithMobileAndRowWithTablet)}>
+            <Link href={"/company-info"}>
+              <div
+                className={cx(css(cardItem), css({ animationDelay: "100ms" }))}
+              >
+                <div className={css(iconWithAnimation)}>
+                  <HomeSVGIcon />
+                </div>
+                <H5Icon type="cardTitle">Company Info</H5Icon>
+                <HomeParagraph role="cardBody">
+                  양돈농가의 생산성 향상과
+                  <br className={css({ hideBelow: "sm" })} />
+                  <span> </span>
+                  양돈산업의 발전을 위해
+                  <br className={css({ hideBelow: "sm" })} />
+                  <span> </span>
+                  매진하고 있습니다.
+                </HomeParagraph>
               </div>
-              <H5Icon type="cardTitle">Company Info</H5Icon>
-              <HomeParagraph role="cardBody">
-                양돈농가의 생산성 향상과
-                <br className={css({ hideBelow: "sm" })} />
-                <span> </span>
-                양돈산업의 발전을 위해
-                <br className={css({ hideBelow: "sm" })} />
-                <span> </span>
-                매진하고 있습니다.
-              </HomeParagraph>
+            </Link>
+            <Link href={"/projects"}>
+              <div
+                className={cx(css(cardItem), css({ animationDelay: "200ms" }))}
+              >
+                <span className={css(iconWithAnimation)}>
+                  <ProductsIcon />
+                </span>
+                <H5Icon type="cardTitle">Products</H5Icon>
+                <HomeParagraph role="cardBody">
+                  저희 한별이레와
+                  <br className={css({ hideBelow: "sm" })} />
+                  <span> </span>
+                  함께해오고 있는 회사의
+                  <br />
+                  제품들을 소개합니다.
+                  <br />
+                </HomeParagraph>
+              </div>
+            </Link>
+            <Link href={"/projects"}>
+              <div
+                className={cx(css(cardItem), css({ animationDelay: "300ms" }))}
+              >
+                <span className={css(iconWithAnimation)}>
+                  <ProjectsIcon />
+                </span>
+                <H5Icon type="cardTitle">Projects</H5Icon>
+                <HomeParagraph role="cardBody">
+                  각 클라이언트의
+                  <br className={css({ hideBelow: "sm" })} />
+                  프로젝트 성과 설명과
+                  <br />
+                  360도 비디오를 보여줍니다.
+                  <br />
+                </HomeParagraph>
+              </div>
+            </Link>
+            <Link href={"/contact"}>
+              <div
+                className={cx(css(cardItem), css({ animationDelay: "400ms" }))}
+              >
+                <span className={css(iconWithAnimation)}>
+                  <ContactIcon />
+                </span>
+                <H5Icon type="cardTitle">Contact</H5Icon>
+                <HomeParagraph role="cardBody">
+                  찾아오시는 길, 문의/주문/견적에
+                  <br />
+                  대하여 자세히 알 수 있습니다.
+                  <br />
+                </HomeParagraph>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </Section>
+      <section>
+        <div
+          className={css({
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "100%",
+            paddingTop: "14vw",
+            paddingBottom: "12vw",
+            paddingLeft: "3%",
+            paddingRight: "3%",
+            backgroundPosition: "left 20%",
+            backgroundRepeat: "no-repeat",
+            backgroundSize: { base: "cover" },
+            zIndex: 1,
+            boxSizing: "border-box",
+            bgImage: "url(/assets/landscape.png)",
+          })}
+        >
+          <div
+            className={css({
+              width: "100%",
+              pt: "calc(100vw * 0.03)",
+              px: { base: "90px", mobile: "30px" },
+              pb: "335px",
+              display: "flex",
+              justifyContent: "center",
+            })}
+          >
+            <div className={css({ width: { base: "48%", mdDown: "100%" } })}>
+              <Text size="headline">
+                We provide consulting and installation on a farm-by-farm
+                <br />
+              </Text>
+              <div className={css({ mb: "12px" })}></div>
+              <Text size="headline">
+                basis with better technology and products.
+              </Text>
+              <div className={css({ mb: "24px" })}></div>
+              <p className={css({ pt: "15px", pb: "25px" })}>
+                저희 한별이레는 책임시공을 전문으로,
+                <br />
+                축사 전체적인 관리와 셋팅을 우선시 합니다.
+              </p>
+              <div
+                className={css({ fontSize: "1rem", pt: "15px", pb: "25px" })}
+              >
+                <p
+                  className={css({
+                    color: "cardIconSVG",
+                    fontSize: "1rem",
+                    mb: "7px",
+                  })}
+                >
+                  WHAT WE CAN HELP YOU ACHIEVE
+                </p>
+                <p className={css({ color: "rgba(0,0,0,0.45)" })}>
+                  <span>
+                    works with swine farmers to improve swine farm’s profits by
+                    improving health status, animal welfare and productivity.
+                  </span>
+                </p>
+              </div>
             </div>
-          </Link>
-          <Link href={"/projects"}>
-            <div
-              className={cx(css(cardItem), css({ animationDelay: "200ms" }))}
-            >
-              <span className={css(iconWithAnimation)}>
-                <ProductsIcon />
-              </span>
-              <H5Icon type="cardTitle">Products</H5Icon>
-              <HomeParagraph role="cardBody">
-                저희 한별이레와
-                <br className={css({ hideBelow: "sm" })} />
-                <span> </span>
-                함께해오고 있는 회사의
-                <br />
-                제품들을 소개합니다.
-                <br />
-              </HomeParagraph>
-            </div>
-          </Link>
-          <Link href={"/projects"}>
-            <div
-              className={cx(css(cardItem), css({ animationDelay: "300ms" }))}
-            >
-              <span className={css(iconWithAnimation)}>
-                <ProjectsIcon />
-              </span>
-              <H5Icon type="cardTitle">Projects</H5Icon>
-              <HomeParagraph role="cardBody">
-                각 클라이언트의
-                <br className={css({ hideBelow: "sm" })} />
-                프로젝트 성과 설명과
-                <br />
-                360도 비디오를 보여줍니다.
-                <br />
-              </HomeParagraph>
-            </div>
-          </Link>
-          <Link href={"/contact"}>
-            <div
-              className={cx(css(cardItem), css({ animationDelay: "400ms" }))}
-            >
-              <span className={css(iconWithAnimation)}>
-                <ContactIcon />
-              </span>
-              <H5Icon type="cardTitle">Contact</H5Icon>
-              <HomeParagraph role="cardBody">
-                찾아오시는 길, 문의/주문/견적에
-                <br />
-                대하여 자세히 알 수 있습니다.
-                <br />
-              </HomeParagraph>
-            </div>
-          </Link>
+          </div>
+        </div>
+      </section>
+      <Section bg="grayGradient">
+        <div
+          className={css({
+            maxWidth: {
+              smDown: "320px",
+              sm: "420px",
+              md: "600px",
+              lg: "1028px",
+              xl: "1245px",
+            },
+            mx: "auto",
+          })}
+        >
+          <H2 css={{ color: "#96969E" }}>Our Partners</H2>
+          <div className={css({ height: "30px" })}></div>
+          <Carousel images={LOGO_PATHS} interval={300} />
+          <div className={css({ height: "50px" })}></div>
         </div>
       </Section>
     </main>
   );
 }
+
+const Text = styled(
+  "span",
+  cva({
+    base: {
+      fontWeight: 300,
+    },
+    variants: {
+      size: {
+        headline: {
+          color: "cardIconSVG",
+          fontSize: {
+            mobile: "20px",
+            sm: "31px",
+            md: "33px",
+            lg: "36px",
+            xl: "42px",
+          },
+          lineHeight: {
+            mobile: "7px",
+            sm: "36px",
+            md: "38px",
+            lg: "40px",
+            xl: "48px",
+          },
+          mb: "7px",
+        },
+      },
+    },
+  })
+);
 
 export const H5Icon = styled(
   "h5",
@@ -293,6 +459,7 @@ export const iconWithAnimation = {
 
 export const flexColWithMobileAndRowWithTablet = {
   display: "grid",
+  maxW: "1245px",
   gridTemplateColumns: { base: "1", mobile: "1", sm: "2", lg: "4" },
   gap: "auto",
 };
@@ -310,8 +477,18 @@ export const Section = styled(
     base: {
       bgColor: "sectionDefaultBg",
       pt: "100px",
-      px: { base: "90px", smDown: "40px" },
+      px: { base: "90px", mobile: "30px" },
       pb: "calc(100vw * 0.05)",
+    },
+    variants: {
+      bg: {
+        white: {
+          bgColor: "#FFFFFF",
+        },
+        grayGradient: {
+          bg: "linear-gradient(90deg,#585b64 0%,#2c2f38 100%)",
+        },
+      },
     },
   })
 );
@@ -367,3 +544,24 @@ const paragraphStyle = cva({
 });
 
 const HomeParagraph = styled("p", paragraphStyle);
+
+function SectionWithMaxWidth({ children }: PropsWithChildren) {
+  return (
+    <Section>
+      <div
+        className={css({
+          maxWidth: {
+            smDown: "320",
+            sm: "420",
+            md: "600",
+            lg: "1028",
+            xl: "1245",
+          },
+          mx: "auto",
+        })}
+      >
+        {children}
+      </div>
+    </Section>
+  );
+}
