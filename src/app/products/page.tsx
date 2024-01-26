@@ -10,7 +10,7 @@ import { PropsWithChildren, ReactNode } from "react";
 import Link from "next/link";
 import { text } from "stream/consumers";
 
-export default function CompanyInfoPage() {
+export default function ProductsPage() {
   return (
     <main
       className={css({
