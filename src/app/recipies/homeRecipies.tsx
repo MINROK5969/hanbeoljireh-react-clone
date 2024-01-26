@@ -1,4 +1,5 @@
-import { css, cva } from "@styled-system/css";
+import { SystemStyleObject } from "@pandacss/dev";
+import { css, cva, cx } from "@styled-system/css";
 import { PropsWithChildren } from "react";
 
 export const sectionStyle = cva({
@@ -12,6 +13,9 @@ export const sectionStyle = cva({
     bg: {
       white: {
         bgColor: "#FFFFFF",
+      },
+      grayPlain: {
+        bgColor: "#f9f9f9",
       },
       grayGradient: {
         bg: "linear-gradient(90deg,#585b64 0%,#2c2f38 100%)",
@@ -38,4 +42,24 @@ export const responsiveContainer = css({
 
 export function ResponsiveContainer({ children }: PropsWithChildren) {
   return <div className={responsiveContainer}>{children}</div>;
+}
+
+interface SectionWithResponsiveContainerProps extends PropsWithChildren {
+  css?: SystemStyleObject;
+}
+
+export function SectionWithResponsiveContainer({
+  children,
+  css: cssProp,
+}: SectionWithResponsiveContainerProps) {
+  return (
+    <section
+      className={cx(
+        css(sectionStyle.raw({ bg: "white" })),
+        css({ ...cssProp })
+      )}
+    >
+      <div className={responsiveContainer}>{children}</div>
+    </section>
+  );
 }

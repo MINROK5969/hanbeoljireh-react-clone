@@ -51,6 +51,10 @@ export default defineConfig({
         border: {
           value: "#96969E",
         },
+        hoverPrimary: {
+          value: "#EBEB9E",
+          description: "Menu, icon hover",
+        },
       },
     },
     extend: {
