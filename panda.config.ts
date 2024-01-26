@@ -48,6 +48,9 @@ export default defineConfig({
           value: "#2b973d",
           description: "Color for svg icon",
         },
+        border: {
+          value: "#96969E",
+        },
       },
     },
     extend: {

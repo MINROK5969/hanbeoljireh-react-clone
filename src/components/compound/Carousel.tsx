@@ -80,7 +80,7 @@ export default function Carousel({
             className={css({
               display: "inline-block",
               width: { mobile: "6rem", sm: "15rem" },
-              mx: "30px",
+              mx: { mobile: "1rem", sm: "2rem" },
             })}
           >
             <div

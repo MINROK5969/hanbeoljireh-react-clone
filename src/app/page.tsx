@@ -14,7 +14,7 @@ import { styled } from "@styled-system/jsx";
 import H5 from "@components/base/Typography/H5";
 import Link from "next/link";
 import Carousel from "@components/compound/Carousel";
-import { PropsWithChildren } from "react";
+import { sectionStyle } from "./recipies/homeRecipies";
 
 const plusIconContainer = cva({
   base: {
@@ -89,7 +89,14 @@ export const PlusIconContainer = styled("div", plusIconContainer);
 
 export default function Home() {
   return (
-    <main>
+    <main
+      className={css({
+        bgColor: "white",
+        pt: {
+          lgDown: "90px",
+        },
+      })}
+    >
       <PageTitleSectionWithImageBackground
         title="Farmer’s Point of View"
         subTitle="Represent pig on pig side."
@@ -471,27 +478,7 @@ export const cardItem = {
   animation: "fadein 2000ms",
 };
 
-export const Section = styled(
-  "section",
-  cva({
-    base: {
-      bgColor: "sectionDefaultBg",
-      pt: "100px",
-      px: { base: "90px", mobile: "30px" },
-      pb: "calc(100vw * 0.05)",
-    },
-    variants: {
-      bg: {
-        white: {
-          bgColor: "#FFFFFF",
-        },
-        grayGradient: {
-          bg: "linear-gradient(90deg,#585b64 0%,#2c2f38 100%)",
-        },
-      },
-    },
-  })
-);
+export const Section = styled("section", sectionStyle);
 
 export const HorizontalDivider = styled(
   "div",
@@ -544,24 +531,3 @@ const paragraphStyle = cva({
 });
 
 const HomeParagraph = styled("p", paragraphStyle);
-
-function SectionWithMaxWidth({ children }: PropsWithChildren) {
-  return (
-    <Section>
-      <div
-        className={css({
-          maxWidth: {
-            smDown: "320",
-            sm: "420",
-            md: "600",
-            lg: "1028",
-            xl: "1245",
-          },
-          mx: "auto",
-        })}
-      >
-        {children}
-      </div>
-    </Section>
-  );
-}
