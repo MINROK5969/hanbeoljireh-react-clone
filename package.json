@@ -11,6 +11,9 @@
     "cleanup-branches": "echo git remote prune origin && git branch -vv | grep ': gone]'| awk '{print $1}' | xargs git branch -D"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.15.6",
     "jotai": "^2.6.1",
     "next": "14.0.4",
     "react": "^18",
@@ -19,6 +22,7 @@
   },
   "devDependencies": {
     "@pandacss/dev": "^0.24.2",
+    "@svgr/webpack": "^8.1.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
