@@ -475,7 +475,10 @@ export const cardItem = {
   textAlign: "center",
   p: "0 20px 20px",
   flex: 1,
-  animation: "fadein 2000ms",
+  opacity: "0",
+  transform: "translateY(50px)",
+  animation: "fadein 2000ms linear forwards",
+  animationTimeline: "view()",
 };
 
 export const Section = styled("section", sectionStyle);

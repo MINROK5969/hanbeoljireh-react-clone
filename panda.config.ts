@@ -63,8 +63,7 @@ export default defineConfig({
       },
       keyframes: {
         fadein: {
-          "0%": { opacity: "0", transform: "translateY(50px)" },
-          "100%": { opacity: "1" },
+          to: { opacity: "1" },
         },
         fadeout: {
           "0%": { opacity: "1" },
