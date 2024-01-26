@@ -460,7 +460,7 @@ export const iconWithAnimation = {
   mb: { base: "1.5rem" },
   "& path": {
     stroke: "cardIconSVG",
-    animation: "draw 2000ms linear",
+    animation: "draw 2000ms linear forwards",
   },
 };
 
@@ -478,7 +478,6 @@ export const cardItem = {
   opacity: "0",
   transform: "translateY(50px)",
   animation: "fadein 2000ms linear forwards",
-  animationTimeline: "view()",
 };
 
 export const Section = styled("section", sectionStyle);

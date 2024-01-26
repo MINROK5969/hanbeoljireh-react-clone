@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, Roboto_Mono, Noto_Sans_KR } from "next/font/google";
 import "../index.css";
-import { ResponsiveContainer, sectionStyle } from "./recipies/homeRecipies";
 import Header from "@components/compound/Header";
+import Footer from "@components/compound/Footer";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 const roboto = Roboto_Mono({ subsets: ["latin"], display: "swap" });
@@ -23,9 +23,7 @@ export default function RootLayout({
       <body className={noto_sans_kr.className}>
         <Header />
         {children}
-        <footer className={sectionStyle()}>
-          <ResponsiveContainer>footer</ResponsiveContainer>
-        </footer>
+        <Footer />
       </body>
     </html>
   );

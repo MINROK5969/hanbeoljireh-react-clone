@@ -4,7 +4,8 @@ import { css, cx } from "@styled-system/css";
 import { flex } from "@styled-system/patterns";
 import { PropsWithChildren, useEffect, useState } from "react";
 import Image from "next/image";
-import hanbyolLogo from "@asset/hbjr_logo.png";
+import hanbyolLogoLight from "@asset/hbjr_logo_light.png";
+import hanbyolLogoDark from "@asset/hbjr_logo_dark.png";
 import { styled } from "@styled-system/jsx";
 import { defineKeyframes } from "@pandacss/dev";
 import Link from "next/link";
@@ -71,14 +72,27 @@ export default function Header({ children }: HeaderProps) {
             <Link href="/">
               <div
                 className={css({
-                  width: { base: "108px", lg: "176px" },
+                  hideFrom: "lg",
+                  width: { base: "108px" },
                   float: "left",
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
                 })}
               >
-                <Image src={hanbyolLogo} alt="Logo" />
+                <Image src={hanbyolLogoDark} alt="Logo" />
+              </div>
+              <div
+                className={css({
+                  hideBelow: "lg",
+                  width: { base: "176px" },
+                  float: "left",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                })}
+              >
+                <Image src={hanbyolLogoLight} alt="Logo" />
               </div>
             </Link>
             <div
